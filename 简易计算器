@@ -1,0 +1,69 @@
+Console.WriteLine("请输入数字1：");
+double num1 = 0;
+while (true)
+{
+    try
+    {
+        num1 = double.Parse(Console.ReadLine());
+        break;
+    }
+    catch
+    {
+        Console.WriteLine("格式错误，请输入数字");
+    }
+}
+while (true)
+{
+    try
+    {
+        Console.WriteLine("请输入运算法则，如要计算结果请输入=，退出输入q：");
+        string fuHao = Console.ReadLine().Trim().ToLower();
+        if (fuHao == "q")
+        {
+        Console.WriteLine("计算机已退出");
+        break;
+        }
+        if (fuHao == "=")
+        {
+            Console.WriteLine("运算结果为：" + num1);
+            break;
+        }
+        else
+        {
+            Console.WriteLine("请继续输入数字");
+            double num2 = int.Parse(Console.ReadLine());
+            switch (fuHao)
+            {
+                case "+":
+                    num1 = num1 + num2;
+                    break;
+                case "-":
+                    num1 = num1 - num2;
+                    break;
+                case "*":
+                    num1 = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("除数不能为0，请重新输入：");
+                        continue;
+                    }
+                    else
+                    {
+                        num1 = num1 / num2;
+                        break;
+                    }
+                default:
+                    Console.WriteLine("输入错误符号,请重新输入。");
+                    continue;
+            }
+            continue;
+        }
+    }
+    catch
+    {
+        Console.WriteLine("输入格式错误，需要输入整数，请重新输入");
+        continue;
+    }
+}
