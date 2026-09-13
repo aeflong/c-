@@ -1,0 +1,33 @@
+            //设置一个随机数
+            Random random = new Random();
+            int m = random.Next(1, 101);
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("请输入猜想的数字：");
+                    int number = int.Parse(Console.ReadLine());
+                    if (number > m)
+                    {
+                        Console.WriteLine("猜大了");
+                        continue;
+
+                    }
+                    else if (number < m)
+                    {
+                        Console.WriteLine("猜小了");
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("猜对了");
+                        break;
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("输入类型错误,请重新输入整数");
+                    continue;
+                }
+            }
