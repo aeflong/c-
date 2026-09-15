@@ -1,0 +1,66 @@
+#region 数组练习题
+//创建数组并赋值
+int[] rawA = new int[100];
+for(int i = 0; i < rawA.Length; i++)//列表默认赋值全为0，需要循环往里面塞值
+{
+    rawA[i] = i;
+}
+
+//创建列表B赋值列表A的二倍
+int[] rawB = new int[100];
+for (int i = 0; i < rawA.Length; i++)
+{
+    rawB[i] = rawA[i]*2;
+}
+
+//列表遍历
+for(int i = 0;i < rawB.Length; i++)
+{
+    Console.WriteLine(rawB[i]);
+}
+
+//生成随机数数组
+Random r=new Random();
+int[] rawC = new int[10];
+for (int i = 0; i<10; i++)
+{
+    rawC[i] = r.Next(0,101);
+}
+for (int i = 0; i < rawC.Length; i++)
+{
+    Console.WriteLine(rawC[i]);
+}
+
+//最大值
+int max = 0;
+for( int i = 0; i < rawC.Length; i++)
+{
+    if(rawC[i] > max)//超过最大值的可以成为新的最大值
+    {
+        max = rawC[i];
+    }
+}
+Console.WriteLine("最大值为"+ max);
+
+//总和
+int sum = 0;
+for (int i = 0; i<rawC.Length; i++)
+{
+    sum+= rawC[i];
+}
+Console.WriteLine("总和为" + sum);
+
+//平均值
+Console.WriteLine("平均值为" + (float)sum / 10);
+
+//交换数组首尾值
+int[] rawD = new int[rawC.Length];
+for (int i = rawC.Length; i > 0; i--)
+{
+    rawD[rawC.Length - i] = rawC[i-1];//长度i为10，但是索引最大为9
+}
+for(int i = 0;i < rawD.Length; i++)
+{
+    Console.WriteLine(rawD[i]);
+}
+#endregion
