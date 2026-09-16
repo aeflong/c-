@@ -1,0 +1,10 @@
+            //列（for循环直接执行定义的变量，后面再进行判断循环）
+            for (int lie = 1; lie <= 9; lie++)
+            {
+                //行
+                for (int hang = 1; hang <= lie; hang++)
+                {
+                    Console.Write(lie + "*" + hang + "=" + hang * lie + "  ");
+                }
+                Console.WriteLine();
+            }
