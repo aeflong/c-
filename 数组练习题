@@ -1,7 +1,6 @@
-#region 数组练习题
 //创建数组并赋值
 int[] rawA = new int[100];
-for(int i = 0; i < rawA.Length; i++)//列表默认赋值全为0，需要循环往里面塞值
+for (int i = 0; i < rawA.Length; i++)//列表默认赋值全为0，需要循环往里面塞值
 {
     rawA[i] = i;
 }
@@ -10,21 +9,21 @@ for(int i = 0; i < rawA.Length; i++)//列表默认赋值全为0，需要循环�
 int[] rawB = new int[100];
 for (int i = 0; i < rawA.Length; i++)
 {
-    rawB[i] = rawA[i]*2;
+    rawB[i] = rawA[i] * 2;
 }
 
 //列表遍历
-for(int i = 0;i < rawB.Length; i++)
+for (int i = 0; i < rawB.Length; i++)
 {
     Console.WriteLine(rawB[i]);
 }
 
 //生成随机数数组
-Random r=new Random();
+Random r1 = new Random();
 int[] rawC = new int[10];
-for (int i = 0; i<10; i++)
+for (int i = 0; i < 10; i++)
 {
-    rawC[i] = r.Next(0,101);
+    rawC[i] = r.Next(0, 101);
 }
 for (int i = 0; i < rawC.Length; i++)
 {
@@ -33,20 +32,20 @@ for (int i = 0; i < rawC.Length; i++)
 
 //最大值
 int max = 0;
-for( int i = 0; i < rawC.Length; i++)
+for (int i = 0; i < rawC.Length; i++)
 {
-    if(rawC[i] > max)//超过最大值的可以成为新的最大值
+    if (rawC[i] > max)//超过最大值的可以成为新的最大值
     {
         max = rawC[i];
     }
 }
-Console.WriteLine("最大值为"+ max);
+Console.WriteLine("最大值为" + max);
 
 //总和
 int sum = 0;
-for (int i = 0; i<rawC.Length; i++)
+for (int i = 0; i < rawC.Length; i++)
 {
-    sum+= rawC[i];
+    sum += rawC[i];
 }
 Console.WriteLine("总和为" + sum);
 
@@ -57,10 +56,74 @@ Console.WriteLine("平均值为" + (float)sum / 10);
 int[] rawD = new int[rawC.Length];
 for (int i = rawC.Length; i > 0; i--)
 {
-    rawD[rawC.Length - i] = rawC[i-1];//长度i为10，但是索引最大为9
+    rawD[rawC.Length - i] = rawC[i - 1];//长度i为10，但是索引最大为9
 }
-for(int i = 0;i < rawD.Length; i++)
+for (int i = 0; i < rawD.Length; i++)
 {
     Console.WriteLine(rawD[i]);
 }
-#endregion
+
+//数组中元素>0就+1，<0就-1，=0不变
+Random r2 = new Random();
+int[] rawE = new int[10];
+for (int i = 0; i < rawE.Length; i++)
+{
+    rawE[i] = r2.Next(-10, 11);
+    Console.WriteLine(rawE[i]);
+    if (rawE[i] > 0)
+    {
+        rawE[i]++;
+    }
+    else if (rawE[i] < 0)
+    {
+        rawE[i]--;
+    }
+}
+for (int i = 0; i < rawE.Length; i++)
+{
+    Console.WriteLine(rawE[i]);
+}
+
+//for循环将10名同学成绩输入数组，求最大最小值，平均值
+float[] rawF = new float[10];
+Console.WriteLine("请分别输入10名同学成绩：");
+for (int i = 0; i < rawF.Length; i++)
+{
+    rawF[i] = float.Parse(Console.ReadLine());
+}
+Console.WriteLine("10名同学的成绩分别为");
+for (int i = 0; i < rawF.Length; i++)
+{
+    Console.WriteLine(rawF[i]);
+}
+float max1 = 0;
+float sum1 = 0;
+for (int i = 0; i < rawF.Length; i++)
+{
+    if (rawF[i] > max1)
+    {
+        max1 = rawF[i];
+    }
+    sum1 += rawF[i];
+}
+Console.WriteLine("最大值为{0},平均值为{1}", max1, sum1 / 10);
+
+//打印图表5*5交叉元素图表
+string[] str = new string[25];
+for (int i = 0; i < str.Length; i++)
+{
+    if (i % 2 == 0)
+    {
+        str[i] = "0";
+    }
+    else
+    {
+        str[i] = "1";
+    }
+
+    if (i % 5 == 0 && i != 0)
+    {
+        Console.WriteLine();
+    }
+    Console.Write(str[i]);
+}
