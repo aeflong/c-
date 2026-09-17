@@ -1,0 +1,100 @@
+//关闭光标
+Console.CursorVisible = false;
+//设置控制台大小
+Console.SetWindowSize(100, 50);
+Console.SetBufferSize(100, 100);
+//设置背景
+Console.BackgroundColor = ConsoleColor.Red;
+Console.ForegroundColor = ConsoleColor.Yellow;
+Console.Clear();
+//设置光标初始位置
+int x;
+int y;
+Console.WriteLine("输入W向上移动，输入S向下移动，输入A向左移动，输入D向右移动，结束输入0");
+Console.WriteLine("请输入光标初始位置，格式(x,y)，输入x和y即可。");
+while (true)
+{
+    ////每次循环前先清空控制台
+    //Console.Clear();
+    try
+    {
+        Console.WriteLine("请输入x：");
+        x = int.Parse(Console.ReadLine());
+        if (x >= 0 && x < Console.WindowWidth)
+        {
+            Console.WriteLine("请输入y：");
+            y = int.Parse(Console.ReadLine());
+            if (y >= 0 && y < Console.WindowHeight)
+            {
+                Console.WriteLine("设置成功，点击回车开始游戏。");
+                Console.ReadLine();
+                Console.Clear();
+
+                break;
+            }
+            else
+            {
+                Console.WriteLine("y需要大于等于0");
+                continue;
+            }
+        }
+        else
+        {
+            Console.WriteLine("x需要大于等于0");
+            continue;
+        }
+
+    }
+    catch
+    {
+        Console.WriteLine("输入格式错误，请重新输入");
+        continue;
+    }
+}
+while (true)
+{
+    Console.SetCursorPosition(x, y);
+    Console.WriteLine("█ ");
+
+    //输入字符不显示，直接传输
+    char ch = Console.ReadKey(true).KeyChar;
+    //全部转化成小写
+    string str = ch.ToString().ToLower();
+    switch (str)
+    {
+        case "w":
+            //先判断再修改
+            if (y - 1 > 0)
+            {
+                y--; ;
+            }
+
+            break;
+        case "s":
+            if (y + 1 < Console.WindowHeight)
+            {
+                y++;
+            }
+
+            break;
+        case "a":
+            if (x - 1 > 0)
+            {
+                x--;
+            }
+            break;
+        case "d":
+            if (x + 1 < Console.WindowHeight)
+            {
+                x++;
+            }
+            break;
+        case "0":
+            Environment.Exit(0);
+            break;
+        default:
+            Console.WriteLine("输入格式错误，重新输入");
+            break;
+    }
+    Console.Clear();
+}
